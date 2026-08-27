@@ -61,7 +61,7 @@ export const beats: Beat[] = [
   {
     id: '1-year',
     kicker: 'In a year',
-    job: "The team runs so smoothly I've made myself unneeded. That space goes to looking across the whole Loyalty landscape, chasing the interesting technical ideas, and bringing experiments back to the wider department.",
+    job: "The team runs so smoothly I've made myself unneeded. That space goes to looking across the whole MCT landscape, chasing the interesting technical ideas, and bringing experiments back to the wider department.",
     off: "Volunteering somewhere the stakes are real — RNLI if I can, something adjacent if I can't. Publishing on the things I keep coming back to: books, history, the arts.",
     epilogue:
       'For: colleagues who deserve a calm team. People who deserve someone showing up in the hard moments.',
