@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { beats, FORK_START_INDEX, REJOIN_INDEX } from '../content'
 import { Walker } from './Walker'
 
@@ -20,6 +21,19 @@ export function Walkway({ current, onSelect }: Props) {
   const forked = isForkedIndex(current)
   const x = xForBeat(current)
   const easing = [0.4, 0, 0.2, 1] as const
+  const transitionMs = 750
+
+  const [walking, setWalking] = useState(false)
+  const firstRender = useRef(true)
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
+    setWalking(true)
+    const t = setTimeout(() => setWalking(false), transitionMs)
+    return () => clearTimeout(t)
+  }, [current])
 
   return (
     <svg
@@ -78,7 +92,7 @@ export function Walkway({ current, onSelect }: Props) {
         transition={{ duration: 0.75, ease: easing }}
         style={{ color: 'var(--color-accent)' }}
       >
-        <ScaledWalker />
+        <ScaledWalker walking={walking} />
       </motion.g>
 
       {/* Secondary walker: appears on lower lane during forked beats */}
@@ -92,17 +106,17 @@ export function Walkway({ current, onSelect }: Props) {
         transition={{ duration: 0.75, ease: easing }}
         style={{ color: 'var(--color-accent)' }}
       >
-        <ScaledWalker />
+        <ScaledWalker walking={walking} />
       </motion.g>
     </svg>
   )
 }
 
-function ScaledWalker() {
+function ScaledWalker({ walking }: { walking: boolean }) {
   return (
     <g transform="scale(0.7)">
       <g transform="translate(-30, -118)">
-        <Walker />
+        <Walker walking={walking} />
       </g>
     </g>
   )
