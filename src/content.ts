@@ -55,7 +55,7 @@ export const beats: Beat[] = [
   {
     id: '6-months',
     kicker: 'In 6 months',
-    job: 'Team ways of working genuinely improved. Loyalty services refactored to a solid, modern baseline.',
+    job: 'Team ways of working evolved and sharpened. Loyalty services refactored to a solid, modern baseline.',
     off: 'Still reading, still listening. Writing has started to find a public home — including on the arts.',
   },
   {
